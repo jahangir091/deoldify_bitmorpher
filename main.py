@@ -1,4 +1,3 @@
-from typing import Union
 import time
 from PIL import Image
 from io import BytesIO
@@ -7,16 +6,10 @@ import io
 import piexif
 import piexif.helper
 from datetime import datetime, timezone
-import logging
 import logging.config
 
 from fastapi import FastAPI, Body
-import rembg
 from fastapi.middleware.cors import CORSMiddleware
-from time import gmtime, strftime
-
-
-
 
 # -------------deoldify imports-------------
 from deoldify.visualize import get_image_colorizer
@@ -64,7 +57,7 @@ async def deoldify_image(
 ):
     utc_time = datetime.now(timezone.utc)
     start_time = time.time()
-    vis = get_image_colorizer(root_folder=Path('/root/deoldify_models'),render_factor=render_factor, artistic=artistic)
+    vis = get_image_colorizer(root_folder=Path('/home/arif/Desktop/deoldify_custom/models'),render_factor=render_factor, artistic=artistic)
     if input_image.startswith("http"):
         img = vis._get_image_from_url(input_image)
     else:
@@ -77,3 +70,10 @@ async def deoldify_image(
         "server_hit_time": str(utc_time),
         "server_time": time.time() - start_time
     }
+
+
+import uvicorn
+
+# uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8001)

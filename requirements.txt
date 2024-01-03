@@ -12,4 +12,4 @@ ffmpeg
 ffmpeg-python
 yt-dlp
 Pillow
-gradio
+#gradio

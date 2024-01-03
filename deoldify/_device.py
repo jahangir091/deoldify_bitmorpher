@@ -10,7 +10,7 @@ class DeviceException(Exception):
 
 class _Device:
     def __init__(self):
-        self.set(DeviceId.CPU)
+        self.set(DeviceId.GPU0)
 
     def is_gpu(self):
         ''' Returns `True` if the current device is GPU, `False` otherwise. '''
