@@ -1,3 +1,4 @@
+import os
 import time
 from PIL import Image
 from io import BytesIO
@@ -57,7 +58,8 @@ async def deoldify_image(
 ):
     utc_time = datetime.now(timezone.utc)
     start_time = time.time()
-    vis = get_image_colorizer(root_folder=Path('/home/arif/Desktop/deoldify_custom/models'),render_factor=render_factor, artistic=artistic)
+    models_dir = Path(os.path.join(os.path.dirname(os.path.realpath(__name__)), "models"))
+    vis = get_image_colorizer(root_folder=models_dir, render_factor=render_factor, artistic=artistic)
     if input_image.startswith("http"):
         img = vis._get_image_from_url(input_image)
     else:
