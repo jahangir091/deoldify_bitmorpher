@@ -1,0 +1,15 @@
+piexif
+opencv-python
+fastapi
+uvicorn[standard]
+gunicorn
+
+# ----------------deoldify requirements--------------------------
+wandb
+fastai==1.0.60
+tensorboardX
+ffmpeg
+ffmpeg-python
+yt-dlp
+Pillow
+gradio
