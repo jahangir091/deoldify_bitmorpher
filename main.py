@@ -8,6 +8,7 @@ import piexif
 import piexif.helper
 from datetime import datetime, timezone
 import logging.config
+import uvicorn
 
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
@@ -50,7 +51,7 @@ def encode_pil_to_base64(image):
     return base64.b64encode(bytes_data)
 
 
-@app.post("/sdapi/ai/deoldify/image")
+@app.post("/ai/api/v1/deoldify/image")
 async def deoldify_image(
     input_image: str = Body("",title="image input"),
     render_factor: int = Body(35,title="render factor"),
@@ -73,8 +74,14 @@ async def deoldify_image(
         "server_time": time.time() - start_time
     }
 
+@app.get("/ai/api/v1/deoldify-server-test")
+async def deoldify_server_test():
 
-import uvicorn
+    return {
+        "success": True,
+        "message": "Server is OK."
+    }
+
 
 # uvicorn main:app --host 0.0.0.0 --port 8001 --reload
 if __name__ == "__main__":
