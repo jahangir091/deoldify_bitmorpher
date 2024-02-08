@@ -39,3 +39,6 @@ notification.mp3
 /.coverage*
 .DS_Store
 .venv
+/ColorizeStable_gen.pth
+/ColorizeArtistic_gen.pth
+/ColorizeVideo_gen.pth
