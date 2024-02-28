@@ -78,7 +78,7 @@ async def deoldify_image(
     # outImg = encode_pil_to_base64(outImg).decode("utf-8")
     out_images_directory_name = '/deoldify_images/'
     out_image_path = get_img_path(out_images_directory_name)
-    image[0].save(out_image_path)
+    outImg.save(out_image_path)
     torch.cuda.empty_cache()
     return {
         "success": True,
