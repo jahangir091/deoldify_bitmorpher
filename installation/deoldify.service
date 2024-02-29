@@ -7,8 +7,6 @@ After=network.target
 WorkingDirectory=/home/deoldify_bitmorpher
 ExecStartPre=/bin/bash -c 'mkdir -p /run/deoldify; chown www-data:www-data /run/deoldify'
 ExecStart=/home/deoldify_bitmorpher/.venv/bin/gunicorn -c gunicorn_conf.py main:app
-StandardOutput=append:/var/log/deoldify/access.log
-StandardError=append:/var/log/deoldify/error.log
 
 
 [Install]
